@@ -49,18 +49,18 @@ public class IncursionTrackerHUD
             stopAtFloor30 = configFile.Bind(
                 "General",
                 "StopTrackingAtFloor30",
-                true,
+                false,
                 "When enabled, freezes all trackers once the player reaches floor 30.");
 
             trackerAnchorX = configFile.Bind(
                 "HUD Positioning",
                 "IncursionTrackerAnchorX",
-                0.04f,
+                0.6512445f,
                 "X anchor position for Incursion Tracker (0-1).");
             trackerAnchorY = configFile.Bind(
                 "HUD Positioning",
                 "IncursionTrackerAnchorY",
-                0.95f,
+                0.93617f,
                 "Y anchor position for Incursion Tracker (0-1).");
             trackerAnchorX.SettingChanged += OnAnchorChanged;
             trackerAnchorY.SettingChanged += OnAnchorChanged;
