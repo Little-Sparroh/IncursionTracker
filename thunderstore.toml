@@ -1,0 +1,38 @@
+[config]
+schemaVersion = "0.0.1"
+
+[package]
+namespace = "Sparroh"
+name = "IncursionTracker"
+description = "Tracks Incursion mission stats with a compact HUD: mission time, remaining time, floor, abominations killed, levers pulled, and door codes input."
+websiteUrl = "https://github.com/Little-Sparroh/IncursionTracker"
+containsNsfwContent = false
+
+[package.dependencies]
+BepInEx-BepInExPack_Mycopunk = "5.4.2403"
+Sparroh-SparrohUILib = "1.0.0"
+
+
+[build]
+icon = "icon.png"
+readme = "README.md"
+outdir = "build"
+
+[[build.copy]]
+source = "bin/Release/net48/IncursionTracker.dll"
+target = "BepInEx/plugins/IncursionTracker.dll"
+
+[[build.copy]]
+source = "CHANGELOG.md"
+target = "CHANGELOG.md"
+
+[[build.copy]]
+source = "LICENSE"
+target = "LICENSE"
+
+[publish]
+repository = "https://thunderstore.io"
+communities = [ "mycopunk" ]
+
+[publish.categories]
+mycopunk = [ "client" ]
