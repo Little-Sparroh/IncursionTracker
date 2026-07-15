@@ -11,8 +11,11 @@ public class IncursionTrackerHUD
     private ConfigEntry<bool> stopAtFloor30;
     private ConfigEntry<float> trackerAnchorX;
     private ConfigEntry<float> trackerAnchorY;
+    private ConfigColor valueColor;
+    private ConfigColor frozenColor;
 
     private HudHandle hud;
+
     private readonly ConfigFile configFile;
 
     private bool isTracking;
@@ -65,8 +68,14 @@ public class IncursionTrackerHUD
             trackerAnchorX.SettingChanged += OnAnchorChanged;
             trackerAnchorY.SettingChanged += OnAnchorChanged;
 
+            valueColor = ConfigColor.Bind(configFile, "Colors", "ValueColor", UIColors.Amber,
+                "Rich-text value color while tracking (hex RRGGBB or #RRGGBB).");
+            frozenColor = ConfigColor.Bind(configFile, "Colors", "FrozenColor", UIColors.TextMuted,
+                "Rich-text value color when trackers are frozen (hex RRGGBB or #RRGGBB).");
+
             enableHud.SettingChanged += OnEnableHudChanged;
         }
+
         catch (Exception ex)
         {
             SparrohPlugin.Logger.LogError($"Failed to initialize IncursionTrackerHUD: {ex.Message}");
@@ -298,9 +307,10 @@ public class IncursionTrackerHUD
 
             float missionTime = isFrozen ? frozenMissionTime : GetCurrentMissionTime();
             float displayRemaining = isFrozen ? frozenRemainingTime : remainingTime;
-            Color color = isFrozen ? UIColors.TextMuted : UIColors.Amber;
+            Color color = isFrozen ? frozenColor.Value : valueColor.Value;
 
             hud.Lines[0].SetRich("Mission", FormatTime(missionTime), color);
+
             hud.Lines[1].SetRich("Remaining", FormatRemaining(displayRemaining), color);
             hud.Lines[2].SetRich("Floor", floor, color);
             hud.Lines[3].SetRich("Aboms", abominationsKilled, color);
