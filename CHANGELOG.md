@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- added ui reload after exiting to menu
+
 ## 1.0.1
 - Mission total time now pauses when the in-game remaining timer is stopped (elevators, inter-floor waits, timer expiry)
 - Nudged tracker HUD slightly toward center so it sits fully on-screen

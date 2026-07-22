@@ -82,7 +82,8 @@ public class IncursionTrackerHUD
         }
     }
 
-    private bool IsHudAlive => hud != null && hud.GameObject != null && hud.Lines != null && hud.Lines.Length >= 6;
+    private bool IsHudAlive => HudHandle.IsValid(hud) && hud.Lines != null && hud.Lines.Length >= 6;
+
 
     public bool IsTracking => isTracking;
     public bool IsFrozen => isFrozen;
@@ -267,11 +268,12 @@ public class IncursionTrackerHUD
         HudRepositionClient.Unregister(SparrohPlugin.PluginGUID);
         if (hud != null)
         {
-            if (hud.GameObject != null)
+            if (hud.IsAlive)
                 hud.Destroy();
             hud = null;
         }
     }
+
 
     public void Update()
     {

@@ -12,7 +12,7 @@ public class SparrohPlugin : BaseUnityPlugin
 {
     public const string PluginGUID = "sparroh.incursiontracker";
     public const string PluginName = "IncursionTracker";
-    public const string PluginVersion = "1.0.1";
+    public const string PluginVersion = "1.0.2";
 
     internal static new ManualLogSource Logger;
 
